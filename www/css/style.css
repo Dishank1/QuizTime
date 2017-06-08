@@ -1,0 +1,49 @@
+/* Empty. Add your own CSS if you like */
+
+.mainPage{
+  text-align: center;
+  background-color: #1976D2;
+
+  padding: 10%;
+}
+
+.imgSize{
+  width: 250px;
+  height: 250px;
+  display: block;
+  padding: inherit;
+  margin: auto;
+
+}
+
+.title{
+  font-size: 30px;
+  text-align: center;
+  width: 100%;
+  color: #FFFFFF;
+
+}
+
+.answerChoice{
+  /*padding: inherit;*/
+  /*margin: 3px;*/
+  /*overflow: scroll;*/
+  padding: 15px 20px;
+     border-radius: 10px;
+     border: 1px solid #bbb;
+  }
+
+.pointBar{
+  padding: 15px 20px;
+     border-radius: 10px;
+     border: 1px solid #bbb;
+  width: 100%;
+}
+
+.answerChoice:hover{
+   cursor: pointer;
+}
+
+.bodyMain{
+  /*background-color: #303F9F;*/
+}

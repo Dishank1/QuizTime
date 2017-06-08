@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html ng-app="starter">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link rel="manifest" href="manifest.json">
+
+    <!-- un-comment this code to enable service worker
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('service-worker.js')
+          .then(() => console.log('service worker installed'))
+          .catch(err => console.log('Error', err));
+      }
+    </script>-->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+    <script src="js/controller.js"></script>
+    <script src="js/services.js"></script>
+
+  </head>
+  <body>
+
+    <ion-pane>
+      <ion-header-bar class="bar-dark">
+        <h1 class="title">Football Quiz</h1>
+      </ion-header-bar>
+      <ion-content style="background-color: #1976D2;">
+        <ion-item class="mainPage" ng-controller="listCtrl as list" ng-hide="list.services.quizActive">
+          <ion-title class="title">Quiz Time!</ion-title>
+          <br/>
+          <br/>
+          <br/>
+          <img src="img/soccer.png" alt="soccer ball" class="imgSize">
+          <button class="button button-block button-stable" ng-click="list.startQuiz()"><strong>Start Quiz</strong></button>
+
+        </ion-item>
+
+        <ion-item class="mainPage" ng-controller="quizCtrl as quiz" ng-show="quiz.services.quizActive">
+          <div ng-hide="quiz.quizOver">
+
+          <ion-title class="title">Guess the Logo!</ion-title>
+          <br/>
+          <br/>
+          <ion-item class="pull-middle item-dark pointBar">Points: {{quiz.points}}</ion-item>
+          <br/>
+          <img class="imgSize" ng-src="{{quiz.DataStuff.quizQuestions[quiz.currQuestion].questionLogo}}"</img>
+          <div class="row">
+
+          <div class="col-xs-12">
+            <div class="col-sm-5" ng-repeat="answer in quiz.DataStuff.quizQuestions[quiz.currQuestion].choices">
+              <button class="button button-full button-stable answerChoice" ng-click="quiz.questionAnswered(answer.answer)">
+                {{answer.answer}}
+              </button>
+            </div>
+        </div>
+      </div>
+      </div>
+
+      <div ng-show="quiz.quizOver">
+        <ion-title class="title">Final Score: {{quiz.points}}</ion-title>
+        <button class="button button-block button-stable" ng-click="quiz.tryAgain()"><strong>Try Again!</strong></button>
+      </div>
+
+
+        </ion-item>
+
+      </ion-content>
+    </ion-pane>
+  </body>
+</html>
